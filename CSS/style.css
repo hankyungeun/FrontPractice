@@ -1,0 +1,12 @@
+/*
+    list-style-type : 목록 스타일을 지정
+        * ul 태그 : disc(검정 원형), circle(흰색 원형), square(검정 사각형), none(아무것도 표시하지 않음)
+*/
+#l-style1{
+    list-style-type: square;
+}
+/*
+    list-style-image: 기호 대신 이미지로 스타일을 지정
+        * url(이미지 경로)
+*/
+#l-style2 {list-style-image: url('https://mblogthumb-phinf.pstatic.net/MjAyMDA1MTNfNTgg/MDAxNTg5Mzc0MTQzNjYw.uh8ZW9mwZKqFbC-xPweNOCRBZIqJjm_uj4QKNjd725kg.pxAxPLgAXS8yWypTBJcrrOHlLTdtr6x47oxT1uWQXmQg.PNG.melodyping/%EB%A7%88%EB%A9%9C%EC%95%84%EC%9D%B4%EC%BD%981.png?type=w800');}
