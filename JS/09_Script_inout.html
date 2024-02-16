@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script 데이터 입출력</title>
+</head>
+<body>
+    <button onclick="documentWrite();">화면에 출려하기</button>
+    <script>
+        function documentWrite(){
+            document.write("화면에 출력하기\r\n")
+            document.write("화면에 출력하기<br>")
+            document.write("!@#$%^&********")
+        }
+    </script>
+
+    <div id="area1"
+        style="width: 500px; height: 300px; border : 1px solid gray;">
+    변경 되기 전</div>
+    <button onclick="printValue();">변경하기(HTML)</button>
+    <button onclick="printValue2();">변경하기(TEXT)</button>
+    <script>
+        function printValue(){
+            //요소 선택하기, id 속성이 area1인 요소를 선택
+            let area = document.getElementById("area1");
+            console.log(area);
+
+            area.innerHTML="<sapn style='color:red;'>InnerHTML을 사용하여 "
+            + " 값을 변경</span>";
+        }
+
+        function printValue2(){
+            //요소 선택하기, id 속성이 area1인 요소를 선택
+            let area = document.getElementById("area1");
+            console.log(area);
+
+            area.innerText="<sapn style='color:red;'>InnerHTML을 사용하여 "
+            + " 값을 변경</span>";
+            area.style = area.style.cssText + "color:blue";
+        }
+    </script>
+    <br>
+    <hr>
+    
+</body>
+</html>

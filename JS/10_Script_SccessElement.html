@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>1) HTML 요소에 접근하기(헤당 요소 객체 가져오기)</h1>
+    <div id="area1"></div>
+    <button onclick="accessById()">아이디로 접근</button>
+    <script>
+        function accessById(){
+            let area1 = document.getElementById("area1");
+
+
+            // 선택한 요소에 HTML 형식의 데이터를 출력
+            area1.innerHTML += "아이디로 접근 성공!! <br>";
+
+            area1.style.background="yellow";
+            area1.style.color="red";
+        }
+    </script>
+
+    <h1>2) 클래스를 이용해서 요소 가져오기</h1>
+    <div>
+        <ul>
+            <li class="list-item">아이템1</li>
+            <li class="list-item">아이템2</li>
+            <li class="list-item">아이템3</li>
+        </ul>
+    </div>
+    <button onclick="changeBackground();">배경색바꾸기</button>
+    <script>
+        function changeBackground(){
+            let list = document.getElementsByClassName("list-item");
+            console.log(list);
+            list[0].style.background="orange";
+        }
+    </script>
+    <h1>3) 태그명을 이용해서 요소 가져오기</h1>
+    <button onclick="changeItemValue();">태그명으로 접근</button>
+    <script>
+        function changeItemValue(){
+            let tag = document.getElementsByTagName('li');
+            for(i = 0; i < tag.length; i++){
+                tag[i].innerHTML = i + 1 + "번 째 요소";
+            }
+        }
+    </script>
+    <h1>4) name 속성을 이용해서 요소 가져오기</h1>
+    <form>
+        <!-- fieldset : form태그 내에서 영역을 나누어 표시할 때 사용하는 태그 -->
+        <fieldset>
+            <!-- legend: 나눈 영역이 의미하는 제목을 표시하는 태그 -->
+            <legend>취미</legend>
+
+            <input type="checkbox" id="total" name="hobby" value="전체선택" onchange="changeTotal();"/>
+            <label for="total">전체선택</label>
+
+            <input type="checkbox" id="game" name="hobby" value="게임" onchange="checkBokTrigger()" />
+            <label for="game">게임</label>
+
+            <input type="checkbox" id="nexfilx" name="hobby" value="넷플릭스보기" onchange="checkBokTrigger()"/>
+            <label for="nexfilx">넷플릭스 보기</label>
+
+            <input type="checkbox" id="mountain" name="hobby" value="등산" onchange="checkBokTrigger()"/>
+            <label for="mountain">등산하기</label>
+        </fieldset>
+    </form>
+    <script>
+        function changeTotal(){
+            let totalChk = document.getElementById('total');
+            console.log(totalChk.checked);          // 체크 : true, 해제 : false
+
+            // 전체 선택 체크박스의 변화에 따라 모든 체크박스 상태를 바꾸고자 할 때
+            let allCheckBox = document.getElementsByName("hobby");
+
+            // foreach문과 동일하게 동작하는 방식
+            for(let checkbox of allCheckBox){
+                checkbox.checked = totalChk.checked;
+            }
+        }
+        function checkBokTrigger(){
+            let totalChk = document.getElementById('total');
+            let trigger = document.getElementsByName('hobby');
+            for(let checkbox of trigger){
+                if(!checkbox.checked){
+                    totalChk.checked = false;
+                }
+            }
+        }
+    </script>
+    <h1>5) 원하는 요소를 자유자재로 가져오기(선택자 활용)</h1>
+    <div id="test1">테스트 영역</div>
+    <div class="test2">
+        <h2>2024-02-16</h2>
+        <h2>금요일</h2>
+    </div>
+    <span>@@@@@@@@</span>
+    <h2>곧 점심입니다.</h2>
+    <button onclick="accessElement()">선택자 활용하여 접근</button>
+    <script>
+        function accessElement(){
+            /*
+                선택자를 활용하여 요소에 접근할 때
+                    document.querySelector("선택자") => 선택된 요소 하나만 반환
+                    document.querySelectorAll("선택자") -> 선택된 요소 객체 배열을 반환
+            */
+           const divTest1 = document.querySelector("#test1");
+           console.log(divTest1.innerText);
+           console.log(divTest1.innerHTML);
+
+           const divTest2 = document.querySelectorAll(".test2 h2");
+           for(let h2 of divTest2){
+                console.log(h2.innerHTML)
+           }
+
+           const spanElement = document.querySelector(".test2+span");
+           console.log(spanElement.innerHTML);
+
+
+        }
+    </script>
+</body>
+</html>
