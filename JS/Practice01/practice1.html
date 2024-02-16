@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js//practice1.js"></script>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>취미</legend>
+            <input type="checkbox" id="total" name="hobby" value="전체선택" onchange="changeTotal();"/>
+            <label for="total">전체선택</label>
+
+            <input type="checkbox" id="all" name="hobby" value="종합" onchange="trigger();"/>
+            <label for="all">종합</label>
+            <input type="checkbox" id="novel" name="hobby" value="소설" onchange="trigger();"/>
+            <label for="novel">소설</label>
+            <input type="checkbox" id="essay" name="hobby" value="시/에세이" onchange="trigger();"/>
+            <label for="essay">시/에세이</label>
+            <input type="checkbox" id="economy" name="hobby" value="경제/경영" onchange="trigger();"/>
+            <label for="economy">경제/경영</label>
+            <input type="checkbox" id="self" name="hobby" value="자기계발" onchange="trigger();"/>
+            <label for="self">자기계발</label>
+            <input type="checkbox" id="child" name="hobby" value="아동" onchange="trigger();"/>
+            <label for="child">아동</label>
+            <input type="checkbox" id="travel" name="hobby" value="여행" onchange="trigger();"/>
+            <label for="travel">여행</label>
+            <input type="checkbox" id="Science" name="hobby" value="과학" onchange="trigger();"/>
+            <label for="Science">과학</label>
+            <input type="checkbox" id="history" name="hobby" value="역사/문화" onchange="trigger();"/>
+            <label for="history">역사/문화</label>
+            <input type="checkbox" id="lang" name="hobby" value="외국어" onchange="trigger();"/>
+            <label for="lang">외국어</label>
+            <input type="checkbox" id="computer" name="hobby" value="컴퓨터" onchange="trigger();"/>
+            <label for="computer">컴퓨터</label>
+        </fieldset>
+    </form>
+    <div>
+        <button onclick="selectCategory();">카테고리 선택</button>
+    </div>
+    <div id="show" style="border: 1px solid black; width: 500px; height: 300px;"></div>    
+    <!-- <input type="text" id="show" style="width: 500px; height: 300px;"/> -->
+    
+</body>
+</html>
