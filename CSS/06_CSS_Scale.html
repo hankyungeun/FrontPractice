@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .scale-box{
+            width: 200px;
+            height: 200px;
+            border: 2px solid;
+
+            /* transform 변형 관련 스타일 */
+            transform: scale(1.0);  /*scale : 요소 사이즈 변형 */
+            /* transition-duration : 변형 시 속도 */
+            transition-duration: 2s;
+        }
+        /* 마우스를 해당 요소에 올렸을 때, 요소의 사이즈를 1/2만큼 줄어들도록 변형 */
+        .scale-box:hover{
+            transform: scale(0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="scale-box"></div>
+</body>
+</html>

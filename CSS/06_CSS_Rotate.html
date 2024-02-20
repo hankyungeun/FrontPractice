@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rotate-box{
+            width: 100px;
+            height: 100px;
+            background-color: steelblue;
+            margin: 15px;
+            display: inline-block;
+
+            animation: rotate 1s infinite;
+        }
+
+        @keyframes rotate {
+            0%{transform: rotate(0);}
+            50%{background-color: aqua;}
+            100%{transform: rotate(360deg);}
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="rotate-box"></div>
+    <div class="rotate-box"></div>
+    <div class="rotate-box"></div>
+</body>
+</html>

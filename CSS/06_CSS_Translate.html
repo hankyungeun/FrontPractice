@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Traslate Page</title>
+    <style>
+        .traslate-box {
+            width: 100px;
+            height: 100px;
+            border: 1px dotted red;
+            background-color: violet;
+            position: relative;         /* position: relative => 이전 요소와 연결하여 배치 */
+
+            /* animaiton 속성 : 이름(keyframes로 정의해놓은) duration timing-function delay iterator-count direction */
+            /*
+                - duration : 애니메이션 총 실행 시간
+                - timing-function : 애니메이션 진행 방식
+                - delay    : 애니메이션 대기 시간 (설정 시간 후 시작)
+                - iterator-count : 애니메이션 진행 횟수
+                - direction : 애니메이션 진행 방향
+            */
+            animation: move 5s linear 2s infinite alternate;
+        }
+        /* 애니메이션 정의 : @keyframes 이름 */
+        @keyframes move {
+            0% { background-color: blueviolet; transform: translate(0px, 0px); }
+
+            25% { background-color:darkred; transform: translate(150px, 0px); }
+
+            50% { background-color:salmon; transform: translate(150px, 150px); }
+
+            75% { background-color: royalblue; transform: translate(0px, 150px); }
+
+            100% { background-color: violet; transform: translate(0px, 0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="traslate-box"></div>
+</body>
+</html>
