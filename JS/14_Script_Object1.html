@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script 객체(1)</title>
+    <style>
+        .area{border: 1px solid gray; background-color: salmon;}
+        .big{height: 400px;}
+        .small{height: 200px;}
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+    <h3>* 객체 선언 및 사용</h3>
+    <p>
+        자바스크립트에서 map을 객체라고 표현한다
+        객체는 {}를 사용해서 생성하고, <br>
+        중괄호 안에 객체에 필요한 속성들을 정의한다. <br>
+        형태 => 속성명(key) : 속성값(value) <br>
+        객체를 파일로 저장할 때 확장자를 .json으로 설정 <br>
+        JSON 형식이라고 표현한다.
+    </p>
+    <pre>
+        변수 = {
+            속셩명: 속성값,
+            속셩명: 속성값,
+            속셩명: 속성값,
+            ...
+        }
+    </pre>
+    <button onclick="test1()">실행</button>
+    <div class="area big" id="area1"></div>
+    <script>
+        function test1(){
+            // 배열 변수 선언
+            const arr = ["망고", 8000, "필리핀산", [10,12]];
+
+            // 객체 변수 선언
+            const product = {
+                "name":"망고",
+                "price":8000,
+                "origin":"필리핀산",
+                "size":{
+                    'width' : 10,
+                    'height': 12
+                },
+                "etc" : [1,2,3]
+
+            }
+            console.log(arr, product);
+
+            const area1 = document.getElementById("area1");
+            area1.innerHTML += "product : " + product+"<br>";
+
+            //객체의 속성에 접근하기
+            //1) 대괄호를 사용하여 접근하기 : 객체["속성값(key)"]
+            area1.innerHTML += "<b>객체명['속성명']으로 접근하기</b><br>";
+            area1.innerHTML += "제품명 : " + product['name'] + '<br>';
+            area1.innerHTML += "가격 : " + product['price'] + '<br>';
+            area1.innerHTML += "원산지 : " + product['origin'] + '<br>';
+            area1.innerHTML += "크기 : " + product['size']['width'] + '<br>';
+            area1.innerHTML += "기타 : " + product['etc'][0] + '<br>';
+
+            // 2) 접근 연산자(.)를 사용하여 접근하기 : 객체.속성명(key) => 속성값(value)
+            area1.innerHTML += "<b>객체명.속성명 으로 접근하기</b><br>";
+            area1.innerHTML += "제품명 : " + product.name + '<br>';
+            area1.innerHTML += "가격 : " + product.price + '<br>';
+            area1.innerHTML += "원산지 : " + product.origin + '<br>';
+            area1.innerHTML += "크기 : " + product.size['width'] + '<br>';
+            area1.innerHTML += "기타 : " + product.etc[0] + '<br>';
+        }
+    </script>
+    <hr>
+    <h3>객체에서의 반복문</h3>
+    <button onclick="test2()">실행</button>
+    <div class="area small" id="area2"></div>
+    <script>
+        function test2(){
+            const arr=["지민석",22,true];
+            let area2 = document.getElementById("area2");
+            for(let item of arr){
+                console.log(item);
+            }
+
+            const person = {
+                name:"지민석",
+                age:22,
+                etc:true
+            }
+            //in 뒤에 객체 제시할 경우, 반복문을 돌면서 해당 객체의 속성명(key)이 앞쪽의 변수에 담겨진다.
+            for(let k in person){
+                console.log(k);
+                console.log(person[k]);
+                console.log(person.name);
+            }
+        }
+    </script>
+    <hr>
+    <h3>* 객체의 함수(메소드) 속성</h3>
+    <p>
+        객체의 속성 중 함수 자료형인 속성을 메소드라고 부른다.
+    </p>
+    <button onclick="test3()">실행</button>
+    <div class="area small" id="area3"></div>
+    <script>
+        function test3(){
+            const area3= document.getElementById("area3");
+
+            const dog = {
+                name:"초코",
+                kind:"요크셔",
+                eat : function(food){
+                    area3.innerHTML += "eat메소드가 호출되었습니다.<br>";
+                    area3.innerHTML += food;
+                }
+            }
+            dog.eat("토마토");
+        }
+    </script>
+    <hr>
+    <h3>* in, with 키워드</h3>
+    <p>
+        in:객체 내에 해당 속성이 있는지 확인해주는 키워드(true : 존재, false : 존재하지 않음)
+    </p>
+    <p>
+        with : 객체의 속성 접근 시 객체 별로 속성을 제시하는 것을 생략할 수 있게 해주는 키워드 
+    </p>
+    이름 : <input type="text" id="name"><br>
+    국어 : <input type="number" id="kor"><br>
+    수학 : <input type="number" id="math"><br>
+    영어 : <input type="number" id="eng"><br>
+    <button onclick="test4()">실행</button>
+    <div class="area big" id="area4"></div>
+    <script>
+        function test4(){
+            let area4 = document.getElementById("area4");
+            const student = {
+                name : document.getElementById("name").value,
+                kor: parseInt(document.getElementById("kor").value),
+                math:parseInt(document.getElementById("math").value),
+                eng: parseInt(document.getElementById("eng").value),
+                toString: function(){
+                    return "이름 : " + this.name + "국어 : " + this.kor + "수학 : " + this.math + "영어 : " + this.eng ;
+                },
+                getSum: function(){
+                    return this.kor + this.math + this.eng
+                },
+                getAvg: function(){
+                    return this.getSum()/3;
+                    
+                }
+            }
+            area4.innerHTML = "name 속성이 있는가? : " + ("name" in student) + "<br>";
+            area4.innerHTML += "age 속성이 있는가? : " + ("age" in student) + "<br>";
+            area4.innerHTML += student + "<br>";
+
+
+            // 객체명을 반복해서 사용하지 않고 객체 내부의 값을 가져오기 위해 사용
+            // with로 지정한 영역에서는 변수를 검사할 때 객체 내에 존재하는 지 먼저 검사
+            with(student){
+                area4.innerHTML += "학생 이름 : " + name + "<br>";
+                area4.innerHTML += "국어 점수 : " + kor + "<br>";
+                area4.innerHTML += "수학 점수 : " + math + "<br>";
+                area4.innerHTML += "영어 점수 : " + eng + "<br>";
+                area4.innerHTML += "총점 : "  + getSum() +  "<br>";
+                area4.innerHTML += "평균 : "  + getAvg() +  "<br>";
+            }
+            
+        }
+    </script>
+
+
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
