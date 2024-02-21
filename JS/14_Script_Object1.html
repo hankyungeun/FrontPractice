@@ -169,6 +169,38 @@
             
         }
     </script>
+    <hr>
+    <h3>* 객체의 속성 추가 및 삭제</h3>
+    <button onclick="test5()">실행</button>
+    <div class="area samll" id="area5"></div>
+    <script>
+        function test5(){
+            const student = {};
+            student.name = "홍길동";
+            console.log(student);
+            student.hobby = ["축구" , "요리"];
+            console.log(student);
+
+            student.toString = function(){
+                const str = "name : " + this.name; + "<br>"
+                            + "hobby : " + this.hobby;
+                return str;
+            }
+            
+            console.log(student);
+            const area5 = document.getElementById("area5");
+            area5.innerHTML += student+"<hr>";
+
+            student.hobby = null;
+            console.log(student);
+
+            delete(student.hobby);
+            console.log(student);
+            
+            area5.innerHTML += student +"<br>";
+
+        }
+    </script>
 
 
 
