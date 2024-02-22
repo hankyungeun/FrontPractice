@@ -83,5 +83,96 @@
             },1000)
         }
     </script>
+    <hr>
+    <h3>[window.]onload</h3>
+    <p>화면에 윈도우 객체가 로드가 완료되면 설정되어 있는 함수를 실행</p>
+    <p>* 윈도우 객체 로드 완료의 의미: 모든 태그가 화면에 표시된 상태 (시점)</p>
+    <div id="area2"></div>
+    <script>
+        onload = function(){
+            // 3초 후 div영역에 데이터 표시
+            setTimeout(function(){
+                document.getElementById("area2").innerHTML = "오늘은 목요일 입니다.<br>";
+                document.getElementById("area2").style.border = "1px solid blue";
+            }, 3 * 1000);
+        }
+    </script>
+    <hr>
+    <h2>BOM(Brower Object Model)</h2>
+    <h3>location 객체</h3>
+    <p>브라우저의 주소창과 관련된 객체</p>
+    <button onclick="console.log(location)">location객체 확인</button>
+    <br><br>
+    <a href="https://www.naver.com">네이버로 이동</a>
+    <button onclick="location.href='https://www.naver.com';">네이버로 이동</button>
+    <div onclick="location.href='http://www.naver.com';">네이버로 이동</div>
+    <br><br>
+    <!-- replace사용 시 뒤로가기 버튼이 동작되지 않음 -->
+    <button onclick="location.replace('http://www.google.com')">구글로 이동</button>
+    <br><br>
+    <!-- 페이지 새로 고침 : reload-->
+    <button onclick="location.reload()">새로고침</button>
+    <button onclick="location.href = location.href">새로고침(2)</button>
+    <hr>
+    <h2>DOM(Document Object Model)</h2>
+    <p>
+        HTML에 있는 각각의 요소들을 노드(Node)라고 표현함<br>
+        > 요소 노드(Element Node) : 태그 그 자체만 의미<br>
+        > 텍스트 노드(Text Node) : 태그 내의 내용 부분을 의미
+    </p>
+    <div>
+        <input type="text">
+        <h1>Hi</h1>
+        <ul>
+            <li>목록 1</li>
+            <li>목록 2</li>
+        </ul>
+    </div>
+    <h3>* 노드(요소) 생성과 관련된 메소드</h3>
+    <h4>텍스트노드가 존재하는 노드 생성(시작태그 + 종료태그)</h4>
+    <button onclick="test4()">노드생성</button>
+    <div id="area4"></div>
+    <script>
+        function test4(){
+            //<h4>안녕하세요</h4> => 노드 추가하기
+            const area4 = document.getElementById("area4");
+            // 1. 문자열로 만드는 방법 => innerHTML
+            area4.innerHTML="<h4>안녕하세요</h4>";
+
+            // 2. document 객체의 메소드를 활용하는 방법
+            //      document.creatElement("태그명");     -> 요소 노드 생성(<태그></태그>)
+            const element = document.createElement("h4");
+            const textNode = document.createTextNode("안녕하세요");
+            element.appendChild(textNode);
+
+            area4.appendChild(element);         // div영역에 생성한 요소를 추가
+        }
+    </script>
+    <br>
+    <h4>텍스트 노드가 존재하지 않는 요소 노드 생성(시작태그만 존재하는 태그)</h4>
+    <button onclick="test5()">노드생성</button>
+    <div id="area5"></div>
+    <script>
+        function test5(){
+            const imgEle = document.createElement("img");
+            imgEle.src = "image_01.jpg";
+            imgEle.width = 300;
+            imgEle.height = 300;
+
+            document.getElementById("area5").appendChild(imgEle);
+        }
+    </script>
+    <h4>* 요소 노드를 삭제</h4>
+    <button onclick="test6()">노드 삭제</button>
+    <script>
+        function test6(){
+            const area5 = document.getElementById("area5");
+            //삭제하고자 하는 요소 노드(객체).remove();
+            // area5.firstChild.remove();
+            
+            //선택자를 사용하여 요소에 접근 => 아이디 속성이'area5'인 요소 내 img요소
+            document.querySelector("#area5 img").remove();
+        }
+    </script>
 </body>
 </html>
