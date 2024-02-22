@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Window 객체</h1>
+    <p>
+        Window 객체는 자바스크립트의 최상위 객체 <br>
+        크게 BOM과 DOM으로 나누어 짐
+    </p>
+    <br>
+    <p> - BOM (Browser Object Model) : location 객체, screen 객체, history 객체</p>
+    <p> - DOM (Document Object Model) : document 객체</p>
+    <h3>[Window.]open("url","창이름","창의 특징")</h3>
+    <button onclick="test1()">네이버</button>
+    <script>
+        function test1(){
+            console.log(window);
+            /*
+                window.open(첫번째, 두번째, 세번째);
+
+                - 첫번째 : 새 창에서 열고자 하는 url주소
+                - 두번째 : 창이름(target), 해당 창 이름으로 같은 창이 열려있으면 새로 열리지 않고, 열려있는 창을 표시
+                - 세번째 : 새 창의 너비, 높이, 주소창여부, 툴바 여부 등 새 창의 설정(특징)
+            */
+           
+           /*
+           * 창의 특징(설정)
+           => px
+           - width : 창의 너비
+           - height : 창의 높이
+           
+           => yes / no
+           - resizeable : 창의 크기 조절 여부
+           - toolbar : 툴바(도구모음)
+           - scrollbars : 스크롤바
+           - status : 상태표시줄
+           */
+          /*
+            - 공통 : width, height
+            - resizeable 적용 : (IE)
+          */
+           window.open("http://www.naver.com", "네이버로 연결", "window=500, height=500, resizable=no,location=no,scrollbars=no");
+        }
+    </script>
+    <hr>
+    <h3>[window.]setTimeout(함수, 시간ms)</h3>
+    <p>
+        설정한 시간 후에 함수의 내용을 실행("한번만")
+    </p>
+    <button onclick="test2()">실행</button>
+    <div id="area1"></div>
+    <script>
+        function test2(){
+            console.log('시작----------');
+            setTimeout(function() { 
+                console.log('setTimeout 실행!!');
+            }, 5000)
+            console.log('종료-----------');
+            
+        }
+    </script>
+    <h3>[window.]setInterval(함수,시간ms)</h3>
+    <p>
+        설정한 시간마다 함수 내용을 실행
+    </p>
+    <button onclick="test3()">실행</button>
+    <script>
+        function test3(){
+            let seconds = 1;
+            // setInterval(function(){
+            //     console.log(seconds++);
+                
+            // }, 1000)
+            setInterval(function(){
+                const now = new Date();
+                console.log('hh:'+now.getHours() + 'mm:'+now.getMinutes() + 'ss:'+now.getSeconds());
+                
+                //
+            },1000)
+        }
+    </script>
+</body>
+</html>
