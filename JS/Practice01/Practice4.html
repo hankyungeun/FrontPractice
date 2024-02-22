@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 1px solid black;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return false;">
+        <fieldset>
+            <legend>구매 정보</legend>
+            <ul>
+                <li>
+                    구매자 : <input type="text" id="name" placeholder="구매자의 이름을 입력하세요">
+                </li>
+                <li>
+                    상품명 : <input type="text" id="product" placeholder="구매 상품 명을 입력하세요">
+                </li>
+                <li>
+                    가격 : <input type="number" id="price" placeholder="구매 가격 입력하세요">
+                </li>
+                <li>
+                    구매 수량 : <input type="number" id="count" placeholder="최소 10." min="10" max="100" step="10">
+                </li>
+                <li>
+                    납품 등급 : <input type="range" id="grade" value="1" min="1" max="9" step="2">
+                </li>
+                <li>
+                    기타 사항 : <textarea id="etc"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+        <br>
+        <button onclick="submitForm();">입력값 출력하기</button>
+    </form>
+    <br>
+    <div id="area1"></div>
+    <script>
+        function submitForm(){
+            console.log('dfdfd');
+            
+            const area1 = document.getElementById("area1");
+            const name = document.getElementById("name").value;
+            const product = document.getElementById("product").value;
+            const price = document.getElementById("price").value;
+            const count = document.getElementById("count").value;
+            const grade = document.getElementById("grade").value;
+            const etc = document.getElementById("etc").value;
+
+            if(count < 10 || count > 100){
+                alert('수량은 10~100 사이의 숫자만 입력할 수 있습니다.');
+                return false;
+            }
+            
+
+            area1.innerHTML += "구매자명 : " + name + "님<br>";
+            area1.innerHTML += "상품명 : " + product + "<br>";
+            area1.innerHTML += "가격 : " + price + "만원<br>";
+            area1.innerHTML += "구매 수량 : " + count + "개<br>";
+            area1.innerHTML += "납품등급 : " + grade + "등급<br>";
+            area1.innerHTML += "기타사항 : " + etc + "<br>";
+        }
+    </script>
+</body>
+</html>
