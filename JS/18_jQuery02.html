@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <title>jQuery 02</title>
+</head>
+<body>
+    <h1>jQuery</h1>
+
+    <h3>jQuery 이벤트</h3>
+    <pre>
+        선택된_요소.append(추가할_내용);
+    </pre>
+    <div class="area" id="area1">
+        <h5>클릭 시 h6 요소 추가</h5>
+    </div>
+    <script>
+        // id속성이 "area1"인 요소 내의 h6태그 클릭 시 h6요소 추가
+        // 선택자 : "#area1 > h6"
+
+        // 방법1) 이벤트 메소드 사용
+        /*
+        $("#area1 > h6").click(function(){
+            $("#area1").append("<h6>태그 클릭으로 추가된 요소</h6>");
+        });
+        */
+        // => 동적으로 생성된 요소에는 이벤트가 적용되지 않음
+
+
+
+        // 방법2) on 메소드
+        /*
+        $("#area1 > h6").on('click', function(){
+            $("#area1").append("<h6>on메소드를 사용해 추가된 요소</h6>");
+        });
+        */
+        // => 동적으로 생성된 요소에는 이벤트가 적용되지 않음
+
+
+        // 방법3) 부모 요소를 통해서 on 메소드 사용
+        // $(부모요소선택).on(이벤트명, 자식요소, function(){})
+        $("#area1").on('click', 'h6', function(){
+            $("#area1").append("<h6>부모 요소를 통해 이벤트로 추가된 요소</h6>");
+        });
+        // => 동적으로 생성된요소에도 이벤트가 잘 적용됨!
+
+        //[참고] 이벤트 발생 시 한번만 실행하고자 할 때 one메소드 사용
+        $("#area1 h5").one('click',function(){
+            $('#area1').append("<h5>one메소드를 사용하여 추가</h5>");
+        });
+    </script>
+</body>
+</html>
